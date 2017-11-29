@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { withGoogleMap, GoogleMap } from 'react-google-maps';
+import { PlaceMarker } from './PlaceMarker';
 
 const BnbMap = withGoogleMap(props => (
   <GoogleMap
     defaultCenter={props.center}
-    defaultZoom={props.zoom} />
+    defaultZoom={props.zoom}>
+    {props.places}
+  </GoogleMap>
 ));
 
 export class Map extends Component {
@@ -21,6 +24,7 @@ export class Map extends Component {
 
   render() {
     const {lat, lng} = this.state;
+    const places = [<PlaceMarker lat={lat} lng={lng} price={20} name={"Hotel"} description={"Hotel desc"} />]
 
     return (
       <div style={{width: `750px`, height: `750px`}}>
@@ -30,6 +34,7 @@ export class Map extends Component {
             lng: lng
           }}
           zoom={this.zoom}
+          places={places}
           containerElement={
             <div style={{ height: `100%` }} />
           }
