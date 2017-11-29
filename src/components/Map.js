@@ -111,8 +111,8 @@ export class Map extends Component {
             lat: lat,
             lng: lng
           }}
-          zoom={this.zoom}
           places={places}
+          zoom={this.zoom}
           containerElement={
             <div style={{ height: `100%` }} />
           }

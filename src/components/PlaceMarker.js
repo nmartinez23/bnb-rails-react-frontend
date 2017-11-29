@@ -25,16 +25,16 @@ export class PlaceMarker extends Component {
 
     return (
       <Marker
+        markerWithLabel={window.markerWithLabel}
+        onClick={this.clickTooltip.bind(this)}
         position={{
           lat: parseFloat(lat),
           lng: parseFloat(lng)
         }}
-        onClick={this.clickTooltip.bind(this)}
-        key={`marker${id}`}
-        markerWithLabel={window.markerWithLabel}
         opacity={0}
         labelClass='map-price-container'
-        labelContent={`<div class="map-price-marker"><span>$${price}</span></div>`}>
+        labelContent={`<div class="map-price-marker"><span>$${price}</span></div>`}
+        key={`marker${id}`}>
         {showTooltip && (
           <PlaceInfoWindow key={`info${id}`}
                            description={description}
